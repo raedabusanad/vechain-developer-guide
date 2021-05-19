@@ -1,14 +1,8 @@
 //const Connex = require('@vechain/connex').Connex;
-const contract = require('./contract');
-const { Transaction, secp256k1, mnemonic } = require('thor-devkit');
+const { mnemonic } = require('thor-devkit');
 const { Driver, SimpleWallet, SimpleNet } = require('@vechain/connex-driver');
 const { Framework } = require('@vechain/connex-framework');
-
-// const connex = new Connex({
-//     node: 'https://testnet.veblocks.net/',
-//     network: 'test'
-// });
-//console.log("status:", connex.thor.status);
+const contract = require('./contract');
 
 const mnemonicWords = "barely labor car just range chimney gold cable youth exile body more";
 
@@ -16,11 +10,10 @@ const contractAddress = "0xed5D02D6f6Ee48C29F003B4B99F7c19EC75Ba3a6";
 
 async function run() {
 
-    //let words = mnemonic.generate();
     let words = mnemonicWords.split(" ");
     let privateKeyBuffer = mnemonic.derivePrivateKey(words);
-    let ok = mnemonic.validate(words);
-    console.log("status:", ok);
+    let isOk = mnemonic.validate(words);
+    console.log("status:", isOk);
     console.log("privateKeyBuffer:", privateKeyBuffer.toString("hex"));
 
     const wallet = new SimpleWallet();
@@ -47,6 +40,5 @@ async function run() {
     let result = await method.call();
     console.log("result:", result.decoded);
 };
-
 
 run();

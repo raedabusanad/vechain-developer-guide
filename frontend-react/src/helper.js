@@ -23,5 +23,4 @@ async function transfer(connex, to, ammount) {
     const signingService = connex.vendor.sign('tx', [msg]);
     let resp = await signingService.request();
     console.log("resp:", resp);
-
 }
