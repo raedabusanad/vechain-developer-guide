@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import logo from './logo.svg';
-import Connex from '@vechain/connex'
+import Connex from '@vechain/connex';
 
 const myAccountAddress = "0x46E305b4E1883a5f1f104464dcEdcbd2618D9EA9";
 
@@ -49,7 +49,6 @@ function App() {
 	const [accInfo, setAccInfo] = useState({});
 	const [contractInfo, setContractInfo] = useState({});
 	const [connex, setConnex] = useState(null);
-	const [account, setAccount] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [tx, setTx] = useState("");
 
@@ -74,7 +73,6 @@ function App() {
 			const contractInfo = await contractAccount.get();
 			console.log("contractAccount:", contractAccount);
 
-			//setAccount(account);
 			setContractInfo(contractInfo);
 			setAccInfo(accountInfo);
 			setConnex(connex);
