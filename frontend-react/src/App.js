@@ -98,7 +98,7 @@ function App() {
 		const acc = connex.thor.account(contractAddress);
 		const method = acc.method(contractABI[0]);
 
-		/** initiate a signing service to commit this method as a transaction */
+		// initiate a signing service to commit this method as a transaction
 		const txSigningService = method.transact(name);
 
 		const transactionInfo = await txSigningService
@@ -115,7 +115,7 @@ function App() {
 		const acc = connex.thor.account(contractAddress);
 		const method = acc.method(contractABI[1]);
 
-		/** call the method (dry-run, without altering blockchain) */
+		// call the method (dry-run, without altering blockchain)
 		let result = await method.call();
 		console.log("result:", result.decoded);
 
