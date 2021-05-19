@@ -51,6 +51,7 @@ function App() {
 	const [connex, setConnex] = useState(null);
 	const [account, setAccount] = useState({});
 	const [loading, setLoading] = useState(false);
+	const [tx, setTx] = useState("");
 
 	const initialise = async () => {
 
@@ -107,6 +108,7 @@ function App() {
 			.request();
 
 		console.log("transactionInfo:", transactionInfo);
+		setTx("https://explore-testnet.vechain.org/transactions/" + transactionInfo.txid);
 		setLoading(false);
 	}
 
@@ -118,6 +120,7 @@ function App() {
 		/** call the method (dry-run, without altering blockchain) */
 		let result = await method.call();
 		console.log("result:", result.decoded);
+
 		setRead(result.decoded[0]);
 		setLoading(false);
 	}
@@ -140,7 +143,9 @@ function App() {
 			<button onClick={handleWrite}>
 				Set name
       		</button>
-
+			<div>
+				<a href={tx} target="_blank">{tx}</a>
+			</div>
 			<br />
 			<br />
 
